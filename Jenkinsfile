@@ -6,7 +6,7 @@ node {
 
     /* Requires the Docker Pipeline plugin to be installed */
     def app
-    def STACK_NAME = "MSM_TEST_${env.BRANCH_NAME.toUpperCase()}"
+    def STACK_NAME = "MSM_TEST_DEV"
 
     stage('Clone repository') {
         echo 'test console'
