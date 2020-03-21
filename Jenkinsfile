@@ -10,7 +10,7 @@ node {
 
     stage('Clone repository') {
         echo 'test console'
-        echo "stack_name : ${STACK_NAME}"
+        echo "stack_name ...: ${STACK_NAME}"
 
         /* Let's make sure we have the repository cloned to our workspace */
         // checkout scm
