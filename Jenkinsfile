@@ -9,11 +9,15 @@ node {
     def STACK_NAME = "MSM_TEST_${env.BRANCH_NAME.toUpperCase()}"
 
     stage('Clone repository') {
+        echo 'test console'
+        echo "stack_name : ${STACK_NAME}"
+
         /* Let's make sure we have the repository cloned to our workspace */
         checkout scm
 		}
 
 	stage('Build  and push image') {
+	    input "Does the staging rc environment look ok?"
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         app = docker.build("${STACK_NAME}:${env.BRANCH_NAME}");
