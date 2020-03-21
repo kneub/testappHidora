@@ -9,42 +9,13 @@ node {
     def STACK_NAME = "MSM_TEST"
 
 
-    stage('Clone repository') {
+    stage('test') {
+        echo "NODE_NAME = ${env.NODE_NAME}"
         echo 'test console'
         echo "stack_name ...aa: ${STACK_NAME}"
         sh 'docker -v'
         /* Let's make sure we have the repository cloned to our workspace */
         // checkout scm
-		}
-
-	stage('Build  and push image') {
-	    agent()
-	    input "Does the staging rc environment look ok?"
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-        //app = docker.build("${STACK_NAME}:dev");
-        //app.push()
 	}
-
-	// Production, only on branch Master
-	// switch (env.BRANCH_NAME) {
-	 //   case "dev":
-
-            stage('Deploy msm-export-excel On Docker DEV environment') {
-            echo "deploy..."
-                    sh """\
-                                             STACK_NAME=${STACK_NAME} \
-                                             BRANCH=dev \
-                                             DOCKER_HOST=tcp://172.17.0.1:3272 \
-                                             docker docker-compose up"""
-                    echo "deploy...2"
-                     sh """\
-                         STACK_NAME=${STACK_NAME} \
-                         BRANCH=dev \
-                         DOCKER_HOST=tcp://172.17.0.1:3272 \
-                         docker stack deploy ${STACK_NAME} --compose-file docker-compose.yml --resolve-image always --prune"""
-            }
-     //       break
-   //	}
 
 }
