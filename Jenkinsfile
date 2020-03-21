@@ -6,21 +6,21 @@ node {
 
     /* Requires the Docker Pipeline plugin to be installed */
     def app
-    def STACK_NAME = "MSM_TEST_DEV"
+    def STACK_NAME = "MSM_TEST"
 
     stage('Clone repository') {
         echo 'test console'
         echo "stack_name : ${STACK_NAME}"
 
         /* Let's make sure we have the repository cloned to our workspace */
-        checkout scm
+        // checkout scm
 		}
 
 	stage('Build  and push image') {
 	    input "Does the staging rc environment look ok?"
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("${STACK_NAME}:${env.BRANCH_NAME}");
+        app = docker.build("${STACK_NAME}:dev");
         app.push()
 	}
 
