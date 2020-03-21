@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  test-app-backend:
+    image: graphql-app-backend
+    build: .
+    volumes:
+      - ./app:/var/www/html/app
+    ports:
+      - 8085:80
+
+  test-app-postgres:
+    image: graphql-app-postgres
+    build: db
+    environment:
+      POSTGRES_DB:  qsweb
+      POSTGRES_USER: kneub
+      POSTGRES_PASSWORD: as2dfg
+      PGDATA : /var/lib/postgresql/data/pgdata
+
+  test-app-pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "5050:80"
+    volumes:
+      - ./db/data:/var/lib/pgadmin/storage/kneub
+      - ./db/servers.json:/pgadmin4/servers.json
+      # for exemple : https://www.pgadmin.org/docs/pgadmin4/dev/export_import_servers.html
+    environment:
+      PGADMIN_DEFAULT_EMAIL: kneub
+      PGADMIN_DEFAULT_PASSWORD: as2dfg
+

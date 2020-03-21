@@ -1,0 +1,19 @@
+settings:
+
+    mode:                   development
+    debug:                  true
+    displayErrorDetails:    true
+
+    jwt:
+      expire:               1209600 # 14 jours
+      expireRefresh:        15552000 # 60 jours
+
+    db:
+      host:                 qsweb-backend-postgresDB
+      port:                 5432
+
+    paginations:
+      users.list:           10
+      recoltes.list:        10
+      localites.list:       20
+      collecteurs.list:     20

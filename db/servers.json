@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "qswebDB",
+            "Group": "Servers",
+            "Port": 5432,
+            "Username": "kneub",
+            "Host": "qsweb-backend-postgresDB",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres"
+        }
+    }
+}

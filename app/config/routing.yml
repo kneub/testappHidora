@@ -1,0 +1,8 @@
+routes:
+  ## test
+  ressource.test:
+      resource: "Routes/test.yml"
+
+  ## users
+  ressource.users:
+      resource: "Routes/users.yml"
