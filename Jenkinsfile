@@ -8,15 +8,18 @@ node {
     def app
     def STACK_NAME = "MSM_TEST"
 
+    agent any
+
     stage('Clone repository') {
         echo 'test console'
         echo "stack_name ...aa: ${STACK_NAME}"
-
+        echo sh 'docker -v'
         /* Let's make sure we have the repository cloned to our workspace */
         // checkout scm
 		}
 
 	stage('Build  and push image') {
+	    agent()
 	    input "Does the staging rc environment look ok?"
         /* This builds the actual image; synonymous to
          * docker build on the command line */
