@@ -20,8 +20,8 @@ node {
 	    input "Does the staging rc environment look ok?"
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("${STACK_NAME}:dev");
-        app.push()
+        //app = docker.build("${STACK_NAME}:dev");
+        //app.push()
 	}
 
 	// Production, only on branch Master
@@ -30,7 +30,7 @@ node {
             stage('Deploy msm-export-excel On Docker DEV environment') {
                      sh """\
                          STACK_NAME=${STACK_NAME} \
-                         BRANCH=${env.BRANCH_NAME} \
+                         BRANCH=dev \
                          DOCKER_HOST=tcp://172.17.0.1:3272 \
                          docker stack deploy ${STACK_NAME} --compose-file docker-compose.yml --resolve-image always --prune"""
             }
