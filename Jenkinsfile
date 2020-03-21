@@ -10,7 +10,7 @@ node {
 
     stage('Clone repository') {
         echo 'test console'
-        echo "stack_name ...: ${STACK_NAME}"
+        echo "stack_name ...aa: ${STACK_NAME}"
 
         /* Let's make sure we have the repository cloned to our workspace */
         // checkout scm
@@ -25,8 +25,8 @@ node {
 	}
 
 	// Production, only on branch Master
-	 switch (env.BRANCH_NAME) {
-	    case "dev":
+	// switch (env.BRANCH_NAME) {
+	 //   case "dev":
             stage('Deploy msm-export-excel On Docker DEV environment') {
                      sh """\
                          STACK_NAME=${STACK_NAME} \
@@ -34,7 +34,7 @@ node {
                          DOCKER_HOST=tcp://172.17.0.1:3272 \
                          docker stack deploy ${STACK_NAME} --compose-file docker-compose.yml --resolve-image always --prune"""
             }
-            break
-   	}
+     //       break
+   //	}
 
 }
