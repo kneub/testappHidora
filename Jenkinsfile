@@ -27,7 +27,15 @@ node {
 	// Production, only on branch Master
 	// switch (env.BRANCH_NAME) {
 	 //   case "dev":
+
             stage('Deploy msm-export-excel On Docker DEV environment') {
+            echo "deploy..."
+                    sh """\
+                                             STACK_NAME=${STACK_NAME} \
+                                             BRANCH=dev \
+                                             DOCKER_HOST=tcp://172.17.0.1:3272 \
+                                             docker docker-compose up"""
+                    echo "deploy...2"
                      sh """\
                          STACK_NAME=${STACK_NAME} \
                          BRANCH=dev \
