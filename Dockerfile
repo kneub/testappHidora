@@ -33,16 +33,8 @@ COPY ./composer.json /var/www/html/
 COPY ./web/ /var/www/html/web/
 COPY ./app/ /var/www/html/app/
 
-# configs
-COPY ./phpunit.xml /var/www/html/phpunit.xml
-
-RUN mkdir /var/www/html/web/upload && chown -R www-data:www-data /var/www/html/web/upload
-
 WORKDIR /var/www/html/
 RUN composer install
-
-#phpunit
-ENV PATH vendor/bin:$PATH
 
 # Virtual Host
 COPY ./configs/vh/qsweb.conf /etc/apache2/sites-available/000-default.conf

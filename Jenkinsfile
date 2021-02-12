@@ -10,7 +10,6 @@ node {
 
 
     stage('test') {
-        echo "NODE_NAME = ${env.NODE_NAME}"
         echo 'test console'
         echo "stack_name ...aa: ${STACK_NAME}"
         sh 'docker -v'

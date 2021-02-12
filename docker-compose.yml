@@ -1,16 +1,16 @@
 version: '3'
 
 services:
-  test-app-backend:
-    image: graphql-app-backend
+  hidora-backend:
+    image: hidora-app-backend:hidora
     build: .
     volumes:
       - ./app:/var/www/html/app
     ports:
       - 8085:80
 
-  test-app-postgres:
-    image: graphql-app-postgres
+  hidora-postgres:
+    image: hidora-postgres:hidora
     build: db
     environment:
       POSTGRES_DB:  qsweb
@@ -18,7 +18,7 @@ services:
       POSTGRES_PASSWORD: as2dfg
       PGDATA : /var/lib/postgresql/data/pgdata
 
-  test-app-pgadmin:
+  hidora-pgadmin:
     image: dpage/pgadmin4
     ports:
       - "5050:80"

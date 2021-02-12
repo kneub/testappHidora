@@ -9,7 +9,7 @@ settings:
       expireRefresh:        15552000 # 60 jours
 
     db:
-      host:                 qsweb-backend-postgresDB
+      host:                 hidora-postgres
       port:                 5432
 
     paginations:
