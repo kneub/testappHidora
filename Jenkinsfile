@@ -21,6 +21,7 @@ node {
         echo 'test console'
         echo "stack_name ...aa: ${STACK_NAME}"
         sh "ls  docker"
+        sh "kubectl get pods"
 	}
 
 	/* stage('Build') {
