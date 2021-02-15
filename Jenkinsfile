@@ -13,15 +13,20 @@ node {
       checkout scm
 	}
 
+    stage('Login registry') {
+        sh " cjb-registry.hidora.com -u hidora.cjb@ville-ge.ch -p Xd4t78TIR5"
+    }
+
     stage('test') {
         echo 'test console'
         echo "stack_name ...aa: ${STACK_NAME}"
+        sh "ls  docker"
 	}
 
-	stage('Build') {
+	/* stage('Build') {
         docker.image('node:9.3.0').inside('-P') {
             sh 'node -v'
         }
-    }
+    } */
 
 }
