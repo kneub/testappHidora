@@ -14,7 +14,7 @@ node {
 	}
 
     stage('Login registry') {
-        sh " cjb-registry.hidora.com -u hidora.cjb@ville-ge.ch -p Xd4t78TIR5"
+        sh "docker login node79989-cjb-private-registry.hidora.com:5000 -u root -p 34Njsk4MLu"
     }
 
     stage('test') {
