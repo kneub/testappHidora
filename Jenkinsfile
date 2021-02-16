@@ -19,8 +19,8 @@ node {
     }
 
     stage('build and push') {
-        app = docker.build("node79989-cjb-private-registry.hidora.com:5000/testapp")
-        app.push("dev")
+        app = docker.build("node79989-cjb-private-registry.hidora.com:5000/testapp:dev")
+        app.push("node79989-cjb-private-registry.hidora.com:5000/testapp:dev")
     }
 
     stage('deploy') {
