@@ -14,25 +14,16 @@ node {
 	}
 
     stage('Login registry') {
+        sh "docker login -u cjbg -p KwM1OQbomRtwMuqG7zvu"
         sh "docker login node79989-cjb-private-registry.hidora.com:5000 -u root -p 34Njsk4MLu"
     }
 
-    /* stage('build and push') {
+    stage('build and push') {
         app = docker.build("node79989-cjb-private-registry.hidora.com:5000/testapp")
-        app.push("latest")
-    } */
+        app.push("dev")
+    }
 
     stage('deploy') {
-        echo 'test console'
-        echo "stack_name ...aa: ${STACK_NAME}"
-        sh "ls  docker"
         sh "kubectl apply -f docker/"
 	}
-
-	/* stage('Build') {
-        docker.image('node:9.3.0').inside('-P') {
-            sh 'node -v'
-        }
-    } */
-
 }
