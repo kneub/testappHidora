@@ -27,7 +27,14 @@
         "squizlabs/php_codesniffer": "2.*",
         "phpunit/phpunit": "^7"
     },
-
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "github-oauth": {
+            "github.com": "fee4012cbf9e383a3839a93d40fd585fde2f50b4"
+        }
+    },
     "autoload": {
         "psr-4": {
           "Kneub\\": "app/"
