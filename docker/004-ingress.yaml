@@ -1,19 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: whoami-ingress
-  namespace: mywhoami
+  name: test-app-ingress
+  namespace: test-app
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
-    ingress.kubernetes.io/whitelist-x-forwarded-for: "true"
-    traefik.ingress.kubernetes.io/whitelist-source-range: "81.28.207.187/24"
 spec:
   rules:
   - host:
     http:
       paths:
-      - path: /mywhoami
+      - path: /test-app
         backend:
-          serviceName: whoami-service
-          servicePort: http 
+          serviceName: test-app-service
+          servicePort: http

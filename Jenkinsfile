@@ -17,11 +17,16 @@ node {
         sh "docker login node79989-cjb-private-registry.hidora.com:5000 -u root -p 34Njsk4MLu"
     }
 
-    stage('test') {
+    stage('build and push') {
+            app = docker.build("node79989-cjb-private-registry.hidora.com:5000/testapp")
+            app.push("latest")
+        }
+
+    stage('deploy') {
         echo 'test console'
         echo "stack_name ...aa: ${STACK_NAME}"
         sh "ls  docker"
-        sh "kubectl get pods"
+        sh "kubectl apply -f docker/"
 	}
 
 	/* stage('Build') {
