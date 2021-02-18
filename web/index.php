@@ -19,6 +19,6 @@ $app->add(function ($req, $res, $next) use($container) {
 
 // Routing
 $rm = $container->get('routeManager');
-$rm->load(PROJ_PATH.'/config/routing.yml');
+$rm->load(PROJ_PATH.'/Routes/routing.yml');
 
 $app->run();
