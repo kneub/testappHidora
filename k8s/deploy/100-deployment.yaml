@@ -38,31 +38,31 @@ spec:
             secretKeyRef:
               name: bota-ani-secret
               key: jwt.secretapi
-        - name: SPRING_DATASOURCE_HOST
+        - name: DB_BATABASE
           valueFrom:
             secretKeyRef:
               name: bota-ani-secret
-              key: spring.datasource.host
-        - name: SPRING_DATASOURCE_PORT
+              key: db.database
+        - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
               name: bota-ani-secret
-              key: spring.datasource.port
-        - name: SPRING_DATASOURCE_DATABASE
+              key: db.username
+        - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: bota-ani-secret
-              key: spring.datasource.database
-        - name: SPRING_DATASOURCE_USERNAME
+              key: db.password
+        - name: GED_PICKER_URL
           valueFrom:
             secretKeyRef:
               name: bota-ani-secret
-              key: spring.datasource.username
-        - name: SPRING_DATASOURCE_PASSWORD
+              key: ged.picker.url
+        - name: UID_GENERATOR_URL
           valueFrom:
             secretKeyRef:
               name: bota-ani-secret
-              key: spring.datasource.password
+              key: uid.generator.url
         volumeMounts:
         - name: bota-ani-credentials
           mountPath: /app/credentials
