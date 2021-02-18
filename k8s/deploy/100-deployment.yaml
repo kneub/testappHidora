@@ -38,7 +38,7 @@ spec:
             secretKeyRef:
               name: bota-ani-secret
               key: jwt.secretapi
-        - name: DB_BATABASE
+        - name: DB_DATABASE
           valueFrom:
             secretKeyRef:
               name: bota-ani-secret
