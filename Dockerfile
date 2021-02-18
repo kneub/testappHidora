@@ -33,8 +33,6 @@ COPY ./composer.json /var/www/html/
 COPY ./web/ /var/www/html/web/
 COPY ./app/ /var/www/html/app/
 
-COPY ./k8s/ /var/www/html/k8s/
-
 WORKDIR /var/www/html/
 RUN composer install
 
