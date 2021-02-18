@@ -18,7 +18,7 @@ node {
             env.DEPLOY_BUILD_DATE = sh(returnStdout: true, script: "date -u +'%Y-%m-%dT%H.%M.%SZ'").trim()
         }
 
-        dir ('k8s') {
+        dir ('k8s/deploy') {
             sh "sed -i \"s|DATE_DEPLOYMENT|${env.DEPLOY_BUILD_DATE}|g\" 100-deployment.yaml"
             sh "sed -i \"s|DEPLOY_COMMIT_HASH|${env.DEPLOY_COMMIT_HASH}|g\" 100-deployment.yaml"
             sh "sed -i \"s|BRANCH_NAME|${env.BRANCH_NAME}|g\" 100-deployment.yaml"
