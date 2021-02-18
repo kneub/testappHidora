@@ -18,6 +18,9 @@ spec:
       volumes:
       - name: bota-ani-credentials
         emptyDir: { }
+      - name: foo
+        configMap:
+          name: myconfigmap
       initContainers:
       - name: confd-init
         image: node79989-cjb-private-registry.hidora.com:5000/bota-ani-confd:DEPLOY_COMMIT_HASH
@@ -56,15 +59,19 @@ spec:
                 name: bota-ani-secret
                 key: spring.datasource.password
         volumeMounts:
-          - name: bota-ani-credentials
-            mountPath: /app/config
+        - name: bota-ani-credentials
+          mountPath: /app/config
       containers:
       - name: test-app-container
         image: node79989-cjb-private-registry.hidora.com:5000/testapp:DEPLOY_COMMIT_HASH
         imagePullPolicy: IfNotPresent
         volumeMounts:
-          - name: bota-ani-credentials
-            mountPath: /app/config
+        - name: bota-ani-credentials
+          mountPath: /app/config
+        - name: foo
+          mountPath: "/app/config/conf"
+          readOnly: true
+
         # testapp:latest
         # readinessProbe:
         #   httpGet:
