@@ -1,0 +1,17 @@
+vendor/*
+node_modules
+
+app/logs/*
+
+*.DS_Store*
+
+/.project
+/.idea
+/.vscode
+/.phpintel
+docker/db/nuxeo/data*
+app/config/common.yml
+app/config/config.yml
+app/config/credentials.yml
+/cache/
+/db/

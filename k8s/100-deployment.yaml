@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-deployment
+  namespace: test-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-app
+  template:
+    metadata:
+      labels:
+        app: test-app
+        date: DATE_DEPLOYMENT
+        stage: BRANCH_NAME
+    spec:
+      volumes:
+      - name: bota-ani-credentials
+        emptyDir: { }
+      initContainers:
+      - name: confd-init
+          image: node79989-cjb-private-registry.hidora.com:5000/bota-ani-confd:DEPLOY_COMMIT_HASH
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 15Mi
+            limits:
+              cpu: 500m
+              memory: 30Mi
+          env:
+            - name: SPRING_DATASOURCE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: bota-ani-secret
+                  key: spring.datasource.host
+            - name: SPRING_DATASOURCE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: bota-ani-secret
+                  key: spring.datasource.port
+            - name: SPRING_DATASOURCE_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: bota-ani-secret
+                  key: spring.datasource.database
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: bota-ani-secret
+                  key: spring.datasource.username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: bota-ani-secret
+                  key: spring.datasource.password
+          volumeMounts:
+            - name: bota-ani-credentials
+              mountPath: /app/credentials
+      containers:
+      - name: test-app-container
+        image: node79989-cjb-private-registry.hidora.com:5000/testapp:DEPLOY_COMMIT_HASH
+        imagePullPolicy: IfNotPresent
+        # testapp:latest
+        # readinessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: 80
+        #   initialDelaySeconds: 15
+        #   timeoutSeconds: 1
