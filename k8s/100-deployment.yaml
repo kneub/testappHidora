@@ -33,11 +33,11 @@ spec:
             cpu: 500m
             memory: 30Mi
         env:
-          - name: JWT.SECRET_API
+          - name: JWT.SECRETAPI
             valueFrom:
               secretKeyRef:
                 name: bota-ani-secret
-                key: jwt.secret_api
+                key: jwt.secretapi
           - name: DB.DATABASE
             valueFrom:
               secretKeyRef:
