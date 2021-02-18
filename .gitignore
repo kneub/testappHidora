@@ -5,6 +5,8 @@ app/logs/*
 
 *.DS_Store*
 
+*.idea*
+
 /.project
 /.idea
 /.vscode
