@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-common
+  namespace: test-app
+data:
+  common.yaml: |
+    common:
+        controller:
+            class_prefix:        \Kneub\Controllers\
+            method_suffix:       Action
+
+        db:
+            driver:       pgsql
+            charset:      utf8
+            collation:    utf8_general_ci
+            prefix:       null

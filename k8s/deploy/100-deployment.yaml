@@ -16,11 +16,14 @@ spec:
         stage: BRANCH_NAME
     spec:
       volumes:
-      - name: bota-ani-credentials
+      - name: test-app-credentials
         emptyDir: { }
-      - name: foo
+      - name: config
         configMap:
-          name: myconfigmap
+          name: configmap-config
+      - name: common
+        configMap:
+          name: configmap-common
       initContainers:
       - name: confd-init
         image: node79989-cjb-private-registry.hidora.com:5000/bota-ani-confd:DEPLOY_COMMIT_HASH
@@ -36,46 +39,50 @@ spec:
         - name: JWT_SECRETAPI
           valueFrom:
             secretKeyRef:
-              name: bota-ani-secret
+              name: test-app-secret
               key: jwt.secretapi
         - name: DB_DATABASE
           valueFrom:
             secretKeyRef:
-              name: bota-ani-secret
+              name: test-app-secret
               key: db.database
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
-              name: bota-ani-secret
+              name: test-app-secret
               key: db.username
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: bota-ani-secret
+              name: test-app-secret
               key: db.password
         - name: GED_PICKER_URL
           valueFrom:
             secretKeyRef:
-              name: bota-ani-secret
+              name: test-app-secret
               key: ged.picker.url
         - name: UID_GENERATOR_URL
           valueFrom:
             secretKeyRef:
-              name: bota-ani-secret
+              name: test-app-secret
               key: uid.generator.url
         volumeMounts:
-        - name: bota-ani-credentials
+        - name: test-app-credentials
           mountPath: /app/credentials
       containers:
       - name: test-app-container
         image: node79989-cjb-private-registry.hidora.com:5000/testapp:DEPLOY_COMMIT_HASH
         imagePullPolicy: IfNotPresent
         volumeMounts:
-        - name: bota-ani-credentials
+        - name: test-app-credentials
           mountPath: "/var/www/html/app/config2"
-        - name: foo
-          mountPath: "/var/www/html/app/config2/myconf.yaml"
+        - name: config
+          mountPath: "/var/www/html/app/config2/config.yaml"
           subPath: config.yaml
+          readOnly: true
+        - name: config
+          mountPath: "/var/www/html/app/config2/common.yaml"
+          subPath: common.yaml
           readOnly: true
 
         # testapp:latest
