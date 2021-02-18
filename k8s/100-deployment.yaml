@@ -67,9 +67,9 @@ spec:
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: bota-ani-credentials
-          mountPath: /app/config
+          mountPath: app/config
         - name: foo
-          mountPath: "/app/config/myconf.yaml"
+          mountPath: "app/config/myconf.yaml"
           subPath: config.yaml
           readOnly: true
 
