@@ -64,7 +64,7 @@ spec:
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - name: bota-ani-credentials
-            mountPath: /app/credentials
+            mountPath: /app/configs
         # testapp:latest
         # readinessProbe:
         #   httpGet:
