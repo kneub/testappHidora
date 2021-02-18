@@ -33,36 +33,36 @@ spec:
             cpu: 500m
             memory: 30Mi
         env:
-          - name: JWT.SECRETAPI
-            valueFrom:
-              secretKeyRef:
-                name: bota-ani-secret
-                key: jwt.secretapi
-          - name: DB.DATABASE
-            valueFrom:
-              secretKeyRef:
-                name: bota-ani-secret
-                key: db.database
-          - name: DB.USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: bota-ani-secret
-                key: db.username
-          - name: DB.PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: bota-ani-secret
-                key: db.password
-          - name: GED.PICKER.URL
-            valueFrom:
-              secretKeyRef:
-                name: bota-ani-secret
-                key: ged.picker.url
-          - name: UID.GENERATOR.URL
-            valueFrom:
-              secretKeyRef:
-                name: bota-ani-secret
-                key: uid.generator.url
+        - name: JWT.SECRETAPI
+          valueFrom:
+            secretKeyRef:
+              name: bota-ani-secret
+              key: jwt.secret.api
+        - name: DB.DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: bota-ani-secret
+              key: db.database
+        - name: DB.USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: bota-ani-secret
+              key: db.username
+        - name: DB.PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bota-ani-secret
+              key: db.password
+        - name: GED.PICKER.URL
+          valueFrom:
+            secretKeyRef:
+              name: bota-ani-secret
+              key: ged.picker.url
+        - name: UID.GENERATOR.URL
+          valueFrom:
+            secretKeyRef:
+              name: bota-ani-secret
+              key: uid.generator.url
         volumeMounts:
         - name: bota-ani-credentials
           mountPath: /app/config
