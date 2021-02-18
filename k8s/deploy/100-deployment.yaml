@@ -80,7 +80,7 @@ spec:
           mountPath: "/var/www/html/app/config2/config.yaml"
           subPath: config.yaml
           readOnly: true
-        - name: config
+        - name: common
           mountPath: "/var/www/html/app/config2/common.yaml"
           subPath: common.yaml
           readOnly: true
