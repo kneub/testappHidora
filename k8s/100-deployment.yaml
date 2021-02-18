@@ -60,7 +60,7 @@ spec:
               key: spring.datasource.password
         volumeMounts:
         - name: bota-ani-credentials
-          mountPath: /app/config
+          mountPath: /app/credentials
       containers:
       - name: test-app-container
         image: node79989-cjb-private-registry.hidora.com:5000/testapp:DEPLOY_COMMIT_HASH
