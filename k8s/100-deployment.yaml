@@ -69,7 +69,8 @@ spec:
         - name: bota-ani-credentials
           mountPath: /app/config
         - name: foo
-          mountPath: "/app/config/conf"
+          mountPath: "/app/config/myconf.yaml"
+          subPath: config.yaml
           readOnly: true
 
         # testapp:latest

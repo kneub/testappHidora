@@ -4,5 +4,9 @@ metadata:
   name: myconfigmap
   namespace: test-app
 data:
-  SPECIAL_LEVEL: very
-  SPECIAL_TYPE: charm
+  config.yaml: |
+    namespaces:
+      - default
+    labels:
+      - "app"
+      - "owner"
