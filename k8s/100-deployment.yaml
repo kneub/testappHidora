@@ -33,6 +33,11 @@ spec:
             cpu: 500m
             memory: 30Mi
         env:
+        - name: JWT_SECRETAPI
+          valueFrom:
+            secretKeyRef:
+              name: bota-ani-secret
+              key: jwt.secretapi
         - name: SPRING_DATASOURCE_HOST
           valueFrom:
             secretKeyRef:
