@@ -67,7 +67,7 @@ spec:
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: bota-ani-credentials
-          mountPath: /var/www/html/app/config2
+          mountPath: /app/credentials
         - name: foo
           mountPath: "/var/www/html/app/config2/myconf.yaml"
           subPath: config.yaml
